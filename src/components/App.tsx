@@ -1,37 +1,30 @@
-import React from 'react';
+import React, {useState} from 'react';
 
-interface FoodFavPros {
-  fav : String
-}
 
-const Food: React.SFC<FoodFavPros> = ( { fav }) => (
-  <div>
-    내 이름은 {fav}
-  </div>
-)
 
-const foodILike:FoodFavPros[] = [
-  {
-    fav: "hello"
-  },
-  {
-    fav: "kimchi"
-  },
-  {
-    fav: "배고파"
+const Food: React.FunctionComponent = () => {
+  const [count, setCount] = useState(0)
+
+  const onPlus = () => {
+    setCount(count +1)
   }
-]
 
-function renderFood(dish:FoodFavPros) {
-  return <Food fav={dish.fav}></Food>
+  const onMinus = () => {
+    setCount(count -1)
+  }
+
+  return <div>
+    <h1>The number is {count}</h1>
+    <button onClick = {onPlus}>Add</button>
+    <button onClick = {onMinus}>Minus</button>
+  </div>
 }
+
 
 function App() {
   return (
     <div >
-      Hi Guys
-      <Food fav="kimchi"/>
-      {foodILike.map(renderFood)}
+      <Food ></Food>
     </div>
   );
 }
