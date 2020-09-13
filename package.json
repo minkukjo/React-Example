@@ -19,7 +19,8 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build"
+    "build": "react-scripts build",
+    "prettier-format": "prettier --config .prettierrc 'src/**/*.ts' --write"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -36,5 +37,8 @@
       "last 1 safari version"
     ]
   },
-  "proxy" : "https://openapi.naver.com"
+  "proxy": "https://openapi.naver.com",
+  "devDependencies": {
+    "prettier": "^2.1.1"
+  }
 }

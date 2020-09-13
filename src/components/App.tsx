@@ -1,13 +1,9 @@
-import React from 'react'
-import Search from "./Search"
-
-
+import React from 'react';
+import Search from './Search';
 
 function App() {
-
-
   return (
-    <div >
+    <div>
       <Search></Search>
     </div>
   );
