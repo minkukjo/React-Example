@@ -1,24 +1,8 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import MovieComponent from './Movie';
-
-interface Movie {
-  actor: string;
-  director: string;
-  image: string;
-  link: string;
-  pubDate: string;
-  subtitle: string;
-  title: string;
-  userRating: string;
-}
-
-interface MovieInformation {
-  display: Number;
-  items: [];
-  start: Number;
-  total: Number;
-}
+import Movie from 'interface/Moive';
+import MovieInformation from 'interface/MovieInformation';
 
 function Search() {
   const [isLoading, setIsLoading] = useState(true);
@@ -46,26 +30,31 @@ function Search() {
       .then((response) => {
         const items = response.data.items as Movie[];
         setMovies(items);
+        console.log(items);
         setIsLoading(false);
       });
   };
 
   return (
     <div className="container">
-      <form>
+      <header className="input">
         <input
           placeholder="영화 제목을 입력해주세요."
           value={input}
           onChange={handleChange}
         ></input>
-      </form>
-      <button onClick={getMovies}>검색</button>
+        <button onClick={getMovies}>검색</button>
+      </header>
       <div className="movies">
         {movies.map((movie, index) => {
           return (
             <MovieComponent
               key={index}
               title={movie.title}
+              actor={movie.actor}
+              director={movie.director}
+              link={movie.link}
+              pubDate={movie.pubDate}
               image={movie.image}
               subtitle={movie.subtitle}
               userRating={movie.userRating}
