@@ -1,18 +1,14 @@
-import React, { useState } from 'react';
-import axios from 'axios';
-import MovieComponent from './Movie';
-import Movie from 'interface/Moive';
-import MovieInformation from 'interface/MovieInformation';
+import React, { useState } from "react";
+import axios from "axios";
+import MovieComponent from "./Movie";
+import Movie from "interface/Moive";
+import MovieInformation from "interface/MovieInformation";
+import { headers } from "utils/constants";
 
 function Search() {
   const [isLoading, setIsLoading] = useState(true);
-  const [input, setInput] = useState('');
+  const [input, setInput] = useState("");
   const [movies, setMovies] = useState<Movie[]>([]);
-  const headers = {
-    'X-Naver-Client-Id': '5ZyDQltFjVoeS9twS18K',
-    'X-Naver-Client-Secret': 'g0jJ0a7tNA',
-    'Access-Control-Allow-Origin': '*',
-  };
   const params = {
     query: input,
   };
@@ -23,7 +19,7 @@ function Search() {
 
   const getMovies = async () => {
     await axios
-      .get<MovieInformation>('/v1/search/movie.json', {
+      .get<MovieInformation>("/v1/search/movie.json", {
         params: params,
         headers: headers,
       })
